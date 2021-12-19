@@ -2,9 +2,10 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const {Post, User, Vote, Comment} = require('../../models');
 
+// get all users
 router.get('/', (req, res) => {
+    console.log('======================');
     Post.findAll({
-        order: [['created_at', 'DESC']],
         attributes: [
             'id', 
             'post_url', 
@@ -76,6 +77,7 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+
     Post.create({
         title: req.body.title,
         post_url: req.body.post_url,
@@ -89,6 +91,7 @@ router.post('/', (req, res) => {
 })
 
 router.put('/upvote', (req, res) => {
+    
     Post.upvote(req.body, {Vote})
         .then(updatedPostData => res.json(updatedPostData))
         .catch(err => {
