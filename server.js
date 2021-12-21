@@ -19,6 +19,8 @@ const sess = {
 };
 
 const app = express();
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({helpers});
 const PORT = process.env.PORT || 3001;
 
 app.engine('handlebars', hbs.engine);
