@@ -7,13 +7,11 @@ test('format_date() returns a date string', () => {
 });
 
 test('format_plural() returns a correctly pluralized word', () => {
-    const word1 = "Tiger";
-    const amount1 = 2;
-    const word2 = "Lion";
-    const amount2 = 1;
+    const word1 = format_plural('tiger', 1);
+    const word2 = format_plural('lion', 2);
 
-    expect(format_plural(word1, amount1)).toBe("Tigers");
-    expect(format_plural(word2, amount2)).toBe("Lion")
+    expect(word1).toBe('tiger');
+    expect(word2).toBe('lions')
 });
 
 test('format_url() returns a simplified url string', () => {
